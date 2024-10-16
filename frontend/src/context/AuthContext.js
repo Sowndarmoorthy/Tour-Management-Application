@@ -1,6 +1,6 @@
 
 
-import { Children, createContext,useEffect,useReducer } from 'react';
+import {createContext,useEffect,useReducer } from 'react';
 
 const initial_state = {
     user:localStorage.getItem('user') !== undefined ? JSON.parse(localStorage.getItem('user')) : null,
@@ -50,7 +50,7 @@ const AuthReducer = (state,action)=>{
     }
 }
 
-export const AuthContextProvider = ({Children})=>{
+export const AuthContextProvider = ({children})=>{
     const [state,dispatch] = useReducer(AuthReducer,initial_state)
 
     useEffect(()=>{
@@ -64,7 +64,7 @@ export const AuthContextProvider = ({Children})=>{
         dispatch
     }}
     >
-        {Children} 
+        {children} 
     
     </AuthContext.Provider>
 }
