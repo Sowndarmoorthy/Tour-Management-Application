@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 module.exports = {
     register: async (req, res) => {
         try {
-            
+            console.log("helleo")
             const salt = bcrypt.genSaltSync(10)
             const hash = bcrypt.hashSync(req.body.password,salt)
 
@@ -32,9 +32,9 @@ module.exports = {
                 return res.status(404).json({success:false,message:"User Not Found!"})
             }
 
-            const checkCorrextPassword = await bcrypt.compare(req.body.password,user.password)
+            const checkCorrectPassword = await bcrypt.compare(req.body.password,user.password)
 
-            if(!checkCorrextPassword){
+            if(!checkCorrectPassword){
                 return res.status(401).json({success:false,message:"Incorrect Email or password"});
             }
             const {password,role, ...rest} = user._doc;
