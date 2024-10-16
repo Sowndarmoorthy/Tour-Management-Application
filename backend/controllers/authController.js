@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 module.exports = {
     register: async (req, res) => {
         try {
-            console.log("helleo")
+           
             const salt = bcrypt.genSaltSync(10)
             const hash = bcrypt.hashSync(req.body.password,salt)
 

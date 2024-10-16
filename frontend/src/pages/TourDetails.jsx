@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../style/tour-details.css';
 import { Container, Row, Col, Form, ListGroup } from 'reactstrap';
 import { useParams } from 'react-router-dom';
@@ -14,15 +14,13 @@ const   TourDetails = () => {
   const reviewMsgRef = useRef("");
   const [tourRating, setTourRating] = useState(null);
  
-  const { data: tour, error } = useFetch(`${BASE_URL}/tours/${tourId}`);
+  const { data: tour, error, loading } = useFetch(`${BASE_URL}/tours/${tourId}`);
 
   if (error) {
     return <div>Error fetching tour data: {error.message}</div>;
   }
-
-  // Ensure tour data is valid
   if (!tour) {
-    return <div>Loading...</div>; // or handle loading state appropriately
+    return <div>Loading...</div>; 
   }
 
   const { photo, title, desc, price, reviews, address, city, distance, maxGroupSize } = tour;
@@ -36,11 +34,22 @@ const   TourDetails = () => {
     alert(`${reviewText}, ${tourRating}`);
   };
 
+  // useEffect(() => {
+  //   window.scrollTo(0,0)
+  // },[tour])
+
   return (
     <>
       <section>
         <Container>
-          <Row>
+          {
+            loading && <h4 className='text-center pt-5'>Loading..............</h4>
+          }
+          {
+            error && <h4 className='text-center pt-5'>{error}</h4>
+          }
+          {
+            !loading && !error &&<Row>
             <Col lg='8'>
               <div className="tour__content">
                 <img src={photo} alt='' />
@@ -106,6 +115,7 @@ const   TourDetails = () => {
               <Booking tour={tour} avgRating={avgRating} />
             </Col>
           </Row>
+          }
         </Container>
       </section>
       <Newsletter />
