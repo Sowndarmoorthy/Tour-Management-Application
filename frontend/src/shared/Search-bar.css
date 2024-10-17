@@ -1,3 +1,4 @@
+
 .search__bar{
     padding: 0.5rem 1rem;
     border-radius: 50px;
@@ -14,13 +15,14 @@
 .form__group input{
     border: none;
     font-size: 0.9rem;
-    color: var(--heading-color);
+    color: var(--heading-color) ;
     font-weight: 500;
 }
 
 .form__group input:focus{
     outline: none;
 }
+
 
 .form__group h6{
     margin-bottom: 0;
@@ -29,7 +31,6 @@
 .form__group-fast{
     border-right: 2px solid #ddd;
 }
-
 .search__icon{
     font-size: 1.6rem;
     padding: 0.5rem;
@@ -39,46 +40,29 @@
     cursor: pointer;
 }
 
-
-@media (max-width: 768px) {
+@media only screen and (max-width: 992px){
     .search__bar{
-        padding: 0.4rem 0.8rem;
         width: 100%;
-        margin-top: 30px;
+        border-radius: 2rem;
     }
-
-    .form__group span{
-        font-size: 1.6rem;
+    .search__bar form {
+        flex-wrap: wrap;
     }
-
-    .form__group input{
-        font-size: 0.8rem;
-    }
-
-    .search__icon{
-        font-size: 1.4rem;
-        padding: 0.4rem;
+    .search__bar form .form__group{
+        width: 48%;
     }
 }
-
-@media (max-width: 480px) {
-    .search__bar{
-        padding: 0.3rem 0.6rem;
+@media only screen and (max-width: 576px){
+    .search__bar form .form__group{
         width: 100%;
-        margin-top: 20px;
     }
-
-    .form__group span{
-        font-size: 1.4rem;
-    }
-
-    .form__group input{
+    .form__group input {
         font-size: 0.7rem;
     }
-
-    .search__icon{
-        font-size: 1.2rem;
-        padding: 0.3rem;
-        border-radius: 8px 2px 8px 2px;
+    .form__group span i{
+        font-size: 1.1rem;
+    }
+    .form__group h6{
+        font-size: 1rem;
     }
 }

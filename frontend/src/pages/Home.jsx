@@ -48,7 +48,7 @@ const Home = () => {
               </div>
             </Col>
             <Col lg='2'>
-              <div className="hero__img-box mt-4">
+              <div className="hero__img-box hero__video-box mt-4">
                 <video src={heroVideo} alt="" controls/>              
               </div>
             </Col>
@@ -94,9 +94,8 @@ const Home = () => {
               <div className="experience__content">
                 <Subtitle subtitle={'Experience'} />
 
-                <h2>With our all exprience <br /> wee will serve you</h2>
-                <p>Lorem ipsum dolor sit amet</p>
-                  Quas aliquam, hic tempora inventore suscipit under.           
+                <h2>With our extensive experience, <br /> we will serve you with excellence</h2>
+                  <p>Your satisfaction is our top priority. We are committed to delivering exceptional service and creating unforgettable experiences for all your travel needs.</p>      
               </div>
               <br />   
               <div className="counter_wrapper d-flex align-items-center gap-5">

@@ -21,7 +21,6 @@ const SearchBar = () => {
 
     const res = await fetch(`${BASE_URL}/tours/search/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`);
 
-    // Log the response
     console.log('Response:', res);
 
     if (!res.ok) {
