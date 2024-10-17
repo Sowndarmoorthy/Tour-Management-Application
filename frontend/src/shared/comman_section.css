@@ -1,6 +1,4 @@
-
-
-.comman_section{
+.comman_section {
     background: linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
     url('../assets/images/tour.jpg') no-repeat center center;
     background-size: cover;
@@ -11,7 +9,29 @@
     text-align: center;
 }
 
-.comman_section h1{
-    font-style: 2.5rem;
+.comman_section h1 {
+    font-size: 2.5rem;
     color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .comman_section {
+        height: 200px; 
+        background-position: center top; 
+    }
+
+    .comman_section h1 {
+        font-size: 1.8rem; 
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .comman_section {
+        height: 150px; 
+        background-position: center top; 
+    }
+
+    .comman_section h1 {
+        font-size: 1.5rem; 
+    }
 }

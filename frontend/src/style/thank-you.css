@@ -1,11 +1,29 @@
-
-
-.thank__you span i{
+.thank__you span i {
     font-size: 4rem;
     color: green;
 }
 
-.thank__you h1{
+.thank__you h1 {
     font-size: 3.6rem;
     font-family: var(--subtitle-font-name);
+}
+
+@media screen and (max-width: 768px) {
+    .thank__you span i {
+        font-size: 3rem; 
+    }
+
+    .thank__you h1 {
+        font-size: 2.8rem; 
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .thank__you span i {
+        font-size: 2.5rem; 
+    }
+
+    .thank__you h1 {
+        font-size: 2.2rem;
+    }
 }

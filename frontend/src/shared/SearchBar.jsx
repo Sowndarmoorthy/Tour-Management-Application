@@ -26,7 +26,7 @@ const SearchBar = () => {
 
     if (!res.ok) {
         alert("Something went wrong");
-        return; // Stop execution if the response is not OK
+        return;
     }
 
     const result = await res.json();
