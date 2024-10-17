@@ -1,0 +1,68 @@
+/* About.css */
+.about-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .about-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .about-description {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .about-content, .about-extra {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  
+  .about-section {
+    width: 30%;
+    padding: 10px;
+  }
+  
+  .about-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .about-image {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Mobile Query */
+  @media (max-width: 768px) {
+    .about-content, .about-extra {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .about-section {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    .about-image {
+      width: 100%;
+    }
+  
+    .about-title {
+      font-size: 1.8rem;
+    }
+  
+    .about-description {
+      font-size: 1rem;
+    }
+  }
+  
