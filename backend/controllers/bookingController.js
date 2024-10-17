@@ -3,7 +3,7 @@ const Booking = require("../models/Booking.js");
 module.exports = {
     createBooking: async (req, res) => {
         const { tourName, fullName, guestSize, phone, bookAt } = req.body;
-        
+    
         const newBooking = new Booking({
             userId: req.user.id,  
             userEmail: req.user.email,  
@@ -13,7 +13,7 @@ module.exports = {
             phone,
             bookAt,
         });
-
+    
         try {
             const savedBooking = await newBooking.save();
             res.status(200).json({
@@ -22,9 +22,10 @@ module.exports = {
                 data: savedBooking,
             });
         } catch (err) {
-            res.status(500).json({ success: true, message: "Internal Server Error" });
+            console.error(err); // Log the error
+            res.status(500).json({ success: false, message: "Internal Server Error" });
         }
-    },
+    },    
     getBooking : async(req,res)=>{
         const id = req.params.id
         try{

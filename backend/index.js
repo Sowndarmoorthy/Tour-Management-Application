@@ -14,6 +14,10 @@ const bookingRoute = require("./routes/bookings.js")
 dotenv.config();
 
 const app = express();
+
+app.use(cookieParser());
+
+
 const port = process.env.PORT || 8000;
 const corsOptions={
     origin:true,
@@ -35,7 +39,6 @@ const connect = async()=>{
 
 app.use(express.json());  
 app.use(cors(corsOptions));       
-app.use(cookieParser());
 app.use('/api/v1/tours',tourRoutes);
 app.use('/api/v1/users',userRoute);
 app.use('/api/v1/auth', authRoute);

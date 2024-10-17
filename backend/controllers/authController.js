@@ -47,6 +47,7 @@ module.exports = {
 
             res.cookie("accessToken",token,{
                 httpOnly:true,
+                secure: true, // Set to true if you're using HTTPS
                 expires:token.expiresIn
             }).status(200).json({success:true , message:"Successfully login",
                 token,

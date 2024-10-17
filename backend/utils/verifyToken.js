@@ -6,7 +6,7 @@ module.exports = {
         const token = req.cookies.accessToken;
 
         if (!token) {
-            return res.status(401).json({ success: false, message: "You're not authorized" });
+            return res.status(401).json({ success: false, message: "You're not authorized token" });
         }
 
         jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {
@@ -25,6 +25,7 @@ module.exports = {
             if (req.user|| req.user.role === 'admin') {
                 next();
             } else {
+                console.log("hi")
                 return res.status(403).json({ success: false, message: "You're Not Authenticated" });
             }
         });

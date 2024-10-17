@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState,useContext } from 'react';
 import '../style/tour-details.css';
 import { Container, Row, Col, Form, ListGroup } from 'reactstrap';
 import { useParams } from 'react-router-dom';
@@ -8,11 +8,13 @@ import Booking from '../components/Booking/Booking';
 import Newsletter from "../shared/Newsletter";
 import useFetch from '../hooks/useFetch';
 import { BASE_URL } from '../utils/config';
+import { AuthContext } from "./../context/AuthContext"
 
 const   TourDetails = () => {
   const { tourId } = useParams();
   const reviewMsgRef = useRef("");
   const [tourRating, setTourRating] = useState(null);
+  const {user} = useContext(AuthContext)
  
   const { data: tour, error, loading } = useFetch(`${BASE_URL}/tours/${tourId}`);
 
@@ -28,10 +30,39 @@ const   TourDetails = () => {
 
   const options = { day: "numeric", month: "long", year: "numeric" };
 
-  const submitHandler = e => {
+  const submitHandler =async e => {
     e.preventDefault();
     const reviewText = reviewMsgRef.current.value;
-    alert(`${reviewText}, ${tourRating}`);
+    // alert(`${reviewText}, ${tourRating}`);
+   
+    try{
+      if(!user || user === undefined || user === null){
+        alert("Please Sign In")
+      }  
+      const reviewObj = {
+        username:user?.username,
+        reviewText,
+        rating:tourRating,
+      }
+      const res = await fetch(`${BASE_URL}/review/${tourId}`,{
+        method:"post",
+        headers:{
+          'content-type':'application/json'
+        },
+        credentials : 'include',
+        body:JSON.stringify(reviewObj)
+      })
+
+      const result = await res.json()
+      if(!res.ok) {
+        return alert(result.message);
+      }
+      alert(result.message);
+      
+    }catch(err){
+      alert(err.message);
+
+    }
   };
 
   // useEffect(() => {
@@ -97,13 +128,14 @@ const   TourDetails = () => {
                           <div className='d-flex align-items-center justify-content-between'>
                             <div>
                               <h5>{review.username || 'User'}</h5>
-                              <p>{new Date(review.date).toLocaleDateString("en-US", options)}</p>
+                              <p>{new Date(review.createdAt)
+                              .toLocaleDateString("en-US", options)}</p>
                             </div>
                             <span className='d-flex align-items-center'>
                               {review.rating}<i className="ri-star-s-fill"></i>
                             </span>
                           </div>
-                          <h6>{review.text}</h6>
+                          <h6>{review.reviewText}</h6>
                         </div>
                       </div>
                     ))}
