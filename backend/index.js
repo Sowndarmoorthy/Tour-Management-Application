@@ -40,7 +40,7 @@ const connect = async () => {
 }
 
 app.use(express.json());
-app.use(cors(corsOptions)); // Use CORS with the defined options
+app.use(cors()); // Use CORS with the defined options
 
 app.use('/api/v1/tours', tourRoutes);
 app.use('/api/v1/users', userRoute);
