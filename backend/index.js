@@ -19,9 +19,15 @@ app.use(cookieParser());
 const port = process.env.PORT || 8000;
 
 const corsOptions = {
-    origin: '*', // Your frontend URL
-    credentials: true // Allow credentials (cookies, authorization headers, etc.)
+    origin: [
+        'http://localhost:4000', // Localhost during development
+        'https://tourister-o1md.onrender.com' // Your deployed frontend URL
+    ],
+    credentials: true, // Include credentials (cookies, authorization headers, etc.)
 };
+
+app.use(cors(corsOptions));
+
 
 console.log('MongoDB URL:', process.env.JWT_SECRET_KEY);
 
@@ -40,7 +46,6 @@ const connect = async () => {
 }
 
 app.use(express.json());
-app.use(cors()); // Use CORS with the defined options
 
 app.use('/api/v1/tours', tourRoutes);
 app.use('/api/v1/users', userRoute);
