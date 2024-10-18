@@ -26,21 +26,30 @@
   width: 30%;
   padding: 10px;
 }
-
 .about-images {
   display: flex;
   justify-content: center;
   gap: 20px;
+  flex-wrap: wrap; /* Allow images to wrap to the next line */
 }
 
 .about-image {
-  width: 300px;
+  width: 300px; /* Set a base width */
   height: auto;
   border-radius: 10px;
 }
 
 /* Mobile Query */
 @media (max-width: 768px) {
+  .about-images {
+      flex-direction: column; /* Stack images vertically on small screens */
+      align-items: center; /* Center images */
+  }
+
+  .about-image {
+      width: 100%; /* Make images full width on small screens */
+  }
+
   .about-content,
   .about-extra {
       flex-direction: column;
@@ -52,16 +61,6 @@
       text-align: center;
       margin-bottom: 20px;
   }
-
-  .about-image {
-    width: 100%;
-    height: auto; /* Ensure the height adjusts proportionally */
-    display: block; /* Ensures there's no extra space below the image */
-    max-width: 100%; /* Prevents images from exceeding their parent container */
-    border-radius: 10px; /* Maintain rounded corners */
-    object-fit: cover; /* Ensures the image covers the area without distortion */
-}
-
 
   .about-title {
       font-size: 1.8rem;
