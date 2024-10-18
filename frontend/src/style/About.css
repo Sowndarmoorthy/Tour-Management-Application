@@ -54,8 +54,14 @@
   }
 
   .about-image {
-      width: 100%;
-  }
+    width: 100%;
+    height: auto; /* Ensure the height adjusts proportionally */
+    display: block; /* Ensures there's no extra space below the image */
+    max-width: 100%; /* Prevents images from exceeding their parent container */
+    border-radius: 10px; /* Maintain rounded corners */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
 
   .about-title {
       font-size: 1.8rem;
