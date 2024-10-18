@@ -19,10 +19,7 @@ app.use(cookieParser());
 const port = process.env.PORT || 8000;
 
 const corsOptions = {
-    origin: [
-        'http://localhost:4000', // Localhost during development
-        'https://tourister-o1md.onrender.com' // Your deployed frontend URL
-    ],
+    origin: true,
     credentials: true, // Include credentials (cookies, authorization headers, etc.)
 };
 
