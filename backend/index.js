@@ -8,10 +8,10 @@ const userRoute = require("./routes/users.js")
 const authRoute = require("./routes/auth.js");
 const reviewRoute = require("./routes/reviews.js");
 const bookingRoute = require("./routes/bookings.js")
+const path = require('path')
 
 
-
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, './.env') });
 
 const app = express();
 
@@ -23,6 +23,7 @@ const corsOptions={
     origin:true,
     credentials:true
 }
+console.log('MongoDB URL:', process.env.JWT_SECRET_KEY);
 
 mongoose.set("strictQuery",false)
 const connect = async()=>{
@@ -33,6 +34,7 @@ const connect = async()=>{
         }) 
         console.log('MongoDb database connected');
     }catch(err){
+        console.log(err)
         console.log("MongoDB database connection failed");
     }
 }
@@ -46,6 +48,14 @@ app.use('/api/v1/review',reviewRoute);
 app.use('/api/v1/booking', bookingRoute);
 
 
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '../frontend', 'build', 'index.html'));
+    });
+}
 
 
 app.listen(port, () => {
