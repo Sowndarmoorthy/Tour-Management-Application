@@ -20,7 +20,7 @@ app.use(cookieParser());
 
 const port = process.env.PORT || 8000;
 const corsOptions={
-    origin:true,
+    origin:'*',
     credentials:true
 }
 console.log('MongoDB URL:', process.env.JWT_SECRET_KEY);
